@@ -1,0 +1,228 @@
+<section class="vfx-hero-container">
+  
+  <!-- Header / Nav (Skip this if you already have a Navbar) -->
+  
+
+  <!-- Hero Content -->
+  <div class="vfx-hero-content">
+    <span class="vfx-tagline">WHAT'S HERE</span>
+    <h1 class="vfx-title">Three ways to grow<br>with this studio.</h1>
+    <p class="vfx-subtitle">Each will have its own dedicated page — this is the front door.</p>
+  </div>
+
+  <!-- Cards Grid Box -->
+  <div class="vfx-cards-box">
+    
+    <!-- Card 1 -->
+    <div class="vfx-card">
+      <div class="vfx-card-num">01 / <span>COURSES</span></div>
+      <div class="vfx-icon-box vfx-icon-purple">◆</div>
+      <h3 class="vfx-card-heading">Structured Courses</h3>
+      <p class="vfx-card-text">
+        Unreal Engine and 3ds Max, taught the way a studio actually works — not a random tutorial playlist.
+      </p>
+      <a href="#" class="vfx-card-link">Explore courses &rarr;</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="vfx-card">
+      <div class="vfx-card-num">02 / <span>LIVE</span></div>
+      <div class="vfx-icon-box vfx-icon-cyan">●</div>
+      <h3 class="vfx-card-heading">Live Classes</h3>
+      <p class="vfx-card-text">
+        Join weekly cohort sessions, get your work reviewed on screen, and ask questions in real time.
+      </p>
+      <a href="#" class="vfx-card-link">See schedule &rarr;</a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="vfx-card">
+      <div class="vfx-card-num">03 / <span>STORE</span></div>
+      <div class="vfx-icon-box vfx-icon-green">▲</div>
+      <h3 class="vfx-card-heading">Sell Your Projects</h3>
+      <p class="vfx-card-text">
+        A space to list and sell your own 3D assets, scenes and renders once you're ready to go pro.
+      </p>
+      <a href="#" class="vfx-card-link">Coming soon &rarr;</a>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+.vfx-hero-container {
+  width: min(92%, 1400px); /* Screen ke hisab se responsive space leta hai */
+  margin: 0 auto;
+  padding: 0 clamp(10px, 2vw, 30px);
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #ffffff;
+}
+
+/* Navbar */
+.vfx-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  margin-bottom: 2rem;
+}
+
+.vfx-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.vfx-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #5d68eb;
+  border-radius: 50%;
+}
+
+.vfx-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.vfx-nav-links a {
+  color: #a0a5b5;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.vfx-btn-enroll {
+  background-color: #5271ff !important;
+  color: #ffffff !important;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* Hero Section */
+.vfx-hero-content {
+  margin-bottom: 3rem;
+}
+
+.vfx-tagline {
+  color: #38ef7d;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Dynamic font-size jo zoom hone par overflow nahi hota */
+.vfx-title {
+  font-size: clamp(28px, 3.5vw, 48px);
+  line-height: 1.15;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.vfx-subtitle {
+  color: #8f94a6;
+  font-size: 15px;
+}
+
+/* Grid layout with dynamic sizing */
+.vfx-cards-box {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background-color: #12141a;
+  border: 1px solid #1f232e;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.vfx-card {
+  padding: clamp(20px, 2.5vw, 35px);
+  border-right: 1px solid #1f232e;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.vfx-card:last-child {
+  border-right: none;
+}
+
+.vfx-card-num {
+  font-size: 12px;
+  color: #4a5061;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.vfx-card-num span {
+  color: #6c7284;
+}
+
+/* Custom Icons */
+.vfx-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.vfx-icon-purple { background: #211c38; color: #7b61ff; }
+.vfx-icon-cyan   { background: #132b35; color: #00d2ff; }
+.vfx-icon-green  { background: #1e2e22; color: #63d471; }
+
+.vfx-card-heading {
+  font-size: clamp(16px, 1.5vw, 22px);
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.vfx-card-text {
+  color: #8f94a6;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+
+.vfx-card-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Extreme zoom / mobile break */
+@media (max-width: 768px) {
+  .vfx-cards-box {
+    grid-template-columns: 1fr;
+  }
+  .vfx-card {
+    border-right: none;
+    border-bottom: 1px solid #1f232e;
+  }
+  .vfx-card:last-child {
+    border-bottom: none;
+  }
+}

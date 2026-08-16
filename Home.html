@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AAKASH VFX STUDIO</title>
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+  <!-- Custom Cursor Elements -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline">
+    <span class="cursor-text"></span>
+  </div>
+
+  <header class="navbar">
+    <div class="logo">
+      <span class="dot">•</span> AAKASH VFX STUDIO
+    </div>
+    <nav class="nav-links">
+      <a href="#whats-here" class="hover-underline" data-cursor-text="VIEW">What's Here</a>
+      <a href="#about" class="hover-underline" data-cursor-text="VIEW">About</a>
+    </nav>
+    <a href="#enroll" class="btn-enroll" data-cursor-text="CONNECT">Enroll Now</a>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="hero-container">
+    
+    <!-- Right side Gola Canvas Container -->
+    <div id="webgl-container"></div>
+
+    <div class="hero-content">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Faculty, Marwadi University • Founder, I MACK Production
+      </div>
+
+      <h1 class="hero-heading">
+        Learn. Build.<br />
+        <span class="gradient-text">Sell your craft.</span>
+      </h1>
+
+      <p class="hero-subtext">
+        Live Unreal Engine & 3ds Max courses, live cohort classes,<br />
+        and a place to sell your own VFX work — all under one roof,<br />
+        taught by a working studio founder.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#start" class="btn-primary" data-cursor-text="START">Start Learning &rarr;</a>
+        <a href="#whats-here" class="btn-secondary" data-cursor-text="VIEW">What's Here</a>
+      </div>
+    </div>
+  </main> 
+  <div class="marquee-wrap">
+  <div class="marquee">
+    <!-- First Set -->
+    <span class="hl">SELL COURSES</span><span class="sep">✦</span>
+    <span class="hl">LIVE CLASSES</span><span class="sep">✦</span>
+    <span class="hl">SELL YOUR PROJECTS</span><span class="sep">✦</span>
+    <span class="hl">UNREAL ENGINE</span><span class="sep">✦</span>
+    <span class="hl">3DS MAX</span><span class="sep">✦</span>
+    
+    <!-- Second Set (Seamless loop ke liye copy) -->
+    <span class="hl">SELL COURSES</span><span class="sep">✦</span>
+    <span class="hl">LIVE CLASSES</span><span class="sep">✦</span>
+    <span class="hl">SELL YOUR PROJECTS</span><span class="sep">✦</span>
+    <span class="hl">UNREAL ENGINE</span><span class="sep">✦</span>
+    <span class="hl">3DS MAX</span><span class="sep">✦</span>
+  </div>
+</div>
+<!-- ================= FEATURE CARDS SECTION START ================= -->
+<section class="fc-section">
+  <div class="fc-container">
+    
+    <!-- Header Text -->
+    <div class="fc-header-tag">WHAT'S HERE</div>
+    <h1 class="fc-main-title">Three ways to grow<br>with this studio.</h1>
+    <p class="fc-subtitle">Each will have its own dedicated page — this is the front door.</p>
+
+    <!-- Cards Layout Wrapper -->
+    <div class="fc-cards-wrapper">
+      
+      <!-- Card 1: Added data-text="EXPLORE" -->
+      <div class="fc-card" data-text="EXPLORE">
+        <div class="fc-card-top">
+          <div class="fc-card-number">01 / COURSES</div>
+          <div class="fc-icon-box fc-box-1">
+            <div class="fc-shape-diamond"></div>
+          </div>
+          <h2 class="fc-card-title">Structured Courses</h2>
+          <p class="fc-card-desc">Unreal Engine and 3ds Max, taught the way a 
+            studio actually works — not a random tutorial playlist.</p>
+        </div>
+        <a href="#" class="fc-card-link">Explore courses &rarr;</a>
+      </div>
+
+      <!-- Card 2: Added data-text="VIEW" -->
+      <div class="fc-card" data-text="VIEW">
+        <div class="fc-card-top">
+          <div class="fc-card-number">02 / LIVE</div>
+          <div class="fc-icon-box fc-box-2">
+            <div class="fc-shape-circle"></div>
+          </div>
+          <h2 class="fc-card-title">Live Classes</h2>
+          <p class="fc-card-desc">Join weekly cohort sessions, get your work 
+            reviewed on screen, and ask questions in real 
+            time.</p>
+        </div>
+        <a href="#" class="fc-card-link">See schedule &rarr;</a>
+      </div>
+
+      <!-- Card 3: Added data-text="SOON" -->
+      <div class="fc-card" data-text="SOON">
+        <div class="fc-card-top">
+          <div class="fc-card-number">03 / STORE</div>
+          <div class="fc-icon-box fc-box-3">
+            <div class="fc-shape-triangle"></div>
+          </div>
+          <h2 class="fc-card-title">Sell Your Projects</h2>
+          <p class="fc-card-desc">A space to list and sell your own 3D assets 
+             scenes and renders once you're ready to go 
+             pro.</p>
+        </div>
+        <a href="#" class="fc-card-link">Coming soon &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Custom Floating Cursor Circle Element -->
+<div id="fc-cursor"></div>
+<!-- ================= FEATURE CARDS SECTION END ================= -->
+
+
+
+  <!-- External JS Files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="globe.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
