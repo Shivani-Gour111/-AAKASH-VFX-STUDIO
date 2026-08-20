@@ -105,3 +105,24 @@ cards.forEach(card => {
     cursor.classList.remove('active');
   });
 });
+
+// Select magnetic button
+const magneticBtn = document.querySelector('.btn-gradient');
+
+if (magneticBtn) {
+  magneticBtn.addEventListener('mousemove', function(e) {
+    const position = magneticBtn.getBoundingClientRect();
+    
+    // Calculate cursor position relative to the center of the button
+    const x = e.clientX - position.left - position.width / 2;
+    const y = e.clientY - position.top - position.height / 2;
+    
+    // Magnetic intensity factor (0.3 matlab smooth magnetic pull)
+    magneticBtn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+  });
+
+  magneticBtn.addEventListener('mouseleave', function() {
+    // Reset position when mouse leaves
+    magneticBtn.style.transform = 'translate(0px, 0px)';
+  });
+}
