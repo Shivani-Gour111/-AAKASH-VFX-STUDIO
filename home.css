@@ -87,17 +87,21 @@ body {
 }
 
 /* --- NAVBAR & HOVER UNDERLINE EFFECT --- */
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 8vw;
   width: 100%;
-  position: relative;
-  z-index: 10;
-  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #0b0b12;
   border-bottom: 1px solid var(--line-color);
+  background-color: rgba(11, 11, 18, 0.75); /* Dark background with opacity */
+  backdrop-filter: blur(10px);              /* Peeche ka content blur karega */
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -169,7 +173,7 @@ body {
 /* --- HERO SECTION --- */
 
 .hero-container {
-  padding: 3rem 4vw 5rem 5vw; 
+  padding: 8rem 4vw 5rem 5vw;
   max-width: 100%;
   min-height: 85vh;
   position: relative;
@@ -182,7 +186,10 @@ body {
   position: relative;
   z-index: 2;
   max-width: 650px;
+  position: relative;
+ 
 }
+
 
 .badge {
   display: inline-flex;
@@ -384,7 +391,6 @@ body {
 .fc-cards-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background-color: #15151D;
   border: 1px solid #1e1e2d;
   border-radius: 16px;
   overflow: hidden;
@@ -592,293 +598,347 @@ body {
 /*   BEHIND THIS SECTION  */
 
 
+/* Global Container Alignment Variable */
 :root {
-  font-size: 16px; /* 1rem = 16px */
+  --site-max-width: 1200px; /* Poori site ki fixed width */
+  --site-padding: 0 2rem;   /* Side margins exact same rahenge */
 }
 
-/* Main Section Wrapper */
+* {
+  box-sizing: border-box;
+}
+
+/* 1. Hero Container Fix */
+.hero-container {
+  max-width: var(--site-max-width);
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem 2rem; /* Exact 2rem side padding */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 600px;
+  width: 100%;
+}
+
+/* 2. Marquee Section Fix */
+.marquee-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
+  padding: 1.5rem 0;
+}
+
+.marquee {
+  display: flex;
+  white-space: nowrap;
+  gap: 2rem;
+}
+
+/* 3. Feature Cards Section Fix */
+.fc-section {
+  width: 100%;
+  background-color: transparent;
+  padding: 3rem 0;
+}
+
+.fc-container {
+  max-width: var(--site-max-width);
+  margin: 0 auto;             /* Hero container ki tarah exact center alignment */
+  padding: var(--site-padding); /* Hero container ki tarah exact side padding */
+  width: 100%;
+}
+
+/* Text Alignment Fix */
+.fc-header-tag,
+.fc-main-title,
+.fc-subtitle {
+  text-align: left;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* Cards Wrapper Grid Fix */
+.fc-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+
+.fc-card {
+  background: #15151D;
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Mobile Alignment Fix */
+@media (max-width: 900px) {
+  .fc-cards-wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+/* ================= WHO'S BEHIND THIS SECTION ================= */
 .wb-section {
+  width: 100%;
   background-color: #0B0B10;
-  color: #ffffff;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  padding: 3.82rem 2.8rem; /* 60px 40px */
+  padding: 4rem 0;
+  box-sizing: border-box;
+}
+
+.wb-container {
+  max-width: var(--site-max-width, 1200px);
+  margin: 0 auto;
+  padding: var(--site-padding, 0 2rem);
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  align-items: flex-start;
   width: 100%;
   box-sizing: border-box;
 }
 
-/* Container */
-.wb-container {
-  max-width: 75rem; /* 1200px */
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 3.75rem; /* 60px */
-  align-items: flex-start;
-  width: 100%;
-}
-
-/* Left Content */
+/* Left Column */
 .wb-left {
   flex: 1;
-  max-width: 32.5rem; /* 520px */
+  max-width: 520px;
 }
 
 .wb-badge {
   color: #00d2ff;
-  font-size: 0.62rem; /* 12px */
-  font-weight: 500;
-  letter-spacing: 0.09375rem; /* 1.5px */
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   display: block;
-  margin-bottom: 1.25rem; /* 20px */
+  margin-bottom: 1rem;
 }
 
 .wb-title {
-  font-size: 1.6rem; /* ~38.4px */
+  font-size: 2.25rem;
   font-weight: 750;
   color: #ffffff;
-  margin-bottom: 1.375rem; /* 22px */
-  line-height: 1.2;
-  letter-spacing: -0.03125rem; /* -0.5px */
+  margin-bottom: 1.25rem;
+  line-height: 1.25;
 }
 
 .wb-desc {
   color: #9ca3af;
-  font-size: 0.75rem; /* ~15.2px */
-  line-height: 1.65;
-  margin-bottom: 1.125rem; /* 18px */
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
 }
 
 .wb-desc:last-child {
   margin-bottom: 0;
 }
 
+/* Right Column */
 .wb-right {
   flex: 1;
-  max-width: 31.25rem; /* 500px */
+  max-width: 500px;
   display: flex;
   flex-direction: column;
 }
 
-.wb-indicator-wrapper {
+.wb-list-wrapper {
   display: flex;
-  justify-content: flex-start;
-  margin-bottom: 1.5rem; /* 24px */
-  padding-left: 1rem; /* 16px */
-}
-
-.wb-dot-ring {
-  width: 1.5rem; /* 24px */
-  height: 1.5rem; /* 24px */
-  border: 1px solid #374151;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.wb-dot-ring::after {
-  content: '';
-  width: 0.375rem; /* 6px */
-  height: 0.375rem; /* 6px */
-  background-color: #00d2ff;
-  border-radius: 50%;
-  box-shadow: 0 0 0.5rem #00d2ff; /* 8px blur */
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
 }
 
 .wb-card {
-  border-bottom: 1px solid #1f2937;
-  padding: 1rem 1rem 1.25rem 1rem; /* 16px 16px 20px 16px */
-  margin-bottom: 0.75rem; /* 12px */
-  border-radius: 0.5rem; /* 8px */
+  border-bottom: 1px solid #15151D;
+  padding: 1.25rem 1rem;
+  border-radius: 0.5rem;
   cursor: pointer;
+  background: #15151D;
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
               background-color 0.3s ease,
               border-color 0.3s ease;
 }
 
-.wb-card:last-child {
-  border-bottom: 1px solid #1f2937;
-  margin-bottom: 0;
-}
-
 .wb-card:hover {
-  transform: translateX(0.625rem);
+  transform: translateX(0.5rem);
   background-color: rgba(255, 255, 255, 0.03);
   border-bottom-color: #00d2ff;
 }
 
 .wb-card-head {
   display: flex;
-  align-items: baseline;
-  gap: 0.75rem; /* 12px */
-  margin-bottom: 0.375rem; /* 6px */
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.375rem;
 }
 
 .wb-num {
   color: #00d2ff;
-  font-size: 0.85rem; /* ~13.6px */
+  font-size: 0.875rem;
   font-weight: 600;
   font-family: monospace;
 }
 
 .wb-card-title {
-  font-size: 0.78rem; /* ~16.8px */
+  font-size: 1.125rem;
   font-weight: 700;
   color: #f3f4f6;
   margin: 0;
-  transition: color 0.3s ease;
-}
-
-.wb-card:hover .wb-card-title {
-  color: #ffffff;
 }
 
 .wb-card-sub {
   color: #6b7280;
-  font-size: 0.72rem; /* ~14px */
-  padding-left: 1.75rem; /* 28px */
-  line-height: 1.45;
+  font-size: 0.875rem;
+  padding-left: 2rem;
+  line-height: 1.5;
   margin: 0;
-  font-weight: 500;
-  transition: color 0.3s ease;
 }
 
-.wb-card:hover .wb-card-sub {
+/* ================= CTA BANNER SECTION ================= */
+.cta-wrapper {
+  width: 100%;
+  max-width: var(--site-max-width, 1200px);
+  margin: 4rem auto;
+  padding: var(--site-padding, 0 2rem);
+  box-sizing: border-box;
+}
+
+.cta-card {
+  background: #0d1117;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cta-title {
+  font-size: 2rem;
+  font-weight: 750;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.cta-desc {
   color: #9ca3af;
+  font-size: 1rem;
+  margin-bottom: 2rem;
 }
 
-/* Responsive Styles */
-@media (max-width: 56.25rem) { /* 900px */
-  .wb-section {
-    padding: 3.125rem 1.5rem; /* 50px 24px */
-  }
-  
-  .wb-container {
-    gap: 2.5rem; /* 40px */
-  }
-}
-
-@media (max-width: 48rem) { /* 768px */
-  .wb-section {
-    padding: 2.5rem 1rem; /* 40px 16px */
-  }
-
+/* ================= RESPONSIVE FIX ================= */
+@media (max-width: 768px) {
   .wb-container {
     flex-direction: column;
-    gap: 2.1875rem; /* 35px */
+    gap: 2.5rem;
   }
-
+  
   .wb-left,
   .wb-right {
     max-width: 100%;
     width: 100%;
   }
-
+  
   .wb-title {
-    font-size: 1.9rem; /* ~30px */
+    font-size: 1.75rem;
   }
-
-  .wb-indicator-wrapper {
-    padding-left: 0;
+  
+  .cta-card {
+    padding: 2rem 1rem;
   }
 }
-
 /* --- CTA BANNER SECTION STYLES --- */
+/* ================= CTA BANNER SECTION ================= */
 .cta-wrapper {
   width: 100%;
-  max-width: 60rem; 
-  margin: 3rem auto 2rem auto;
-  padding: 0 2rem;
+  max-width: var(--site-max-width, 1200px); /* Baaki sections ke barabar max-width */
+  margin: 5rem auto;                         /* Screen me center align karega */
+  padding: var(--site-padding, 0 2rem);      /* Same side padding */
   box-sizing: border-box;
 }
 
 .cta-card {
-  position: relative;
-  background: radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.28) 0%, rgba(18, 22, 33, 0.98) 65%), #121621;
+ background: radial-gradient(circle at 20% 0%, #302857 0%, #15151D 65%, #15151D);
   border: 1px solid #1f2937;
-  border-radius: 1.5rem;
-  padding: 3.5rem 2rem; 
+  border-radius: 16px;
+  padding: 3.5rem 2rem;                      /* Clean vertical padding */
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Heading */
 .cta-title {
-  font-size: 1.65rem; 
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  margin-bottom: 1rem;
-  max-width: 40rem;
+  font-size: 2.25rem;                       /* 36px - Clean readable heading */
+  font-weight: 750;
   color: #ffffff;
+  margin: 0 0 1rem 0;
+  line-height: 1.25;
 }
 
-/* Description Text */
 .cta-desc {
   color: #9ca3af;
-  font-size: 0.78rem;
-  margin-bottom: 1.75rem;
-  max-width: 30rem;
-  line-height: 1.5;
+  font-size: 1rem;                          
+  max-width: 550px;                          
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
 }
 
-/* --- MAGNETIC BUTTON STYLES --- */
+/* Button Alignment & Styling */
 .btn-gradient {
-  background: linear-gradient(135deg, #7166FF, #38bdf8);
+  display: inline-block;
+ background: linear-gradient(135deg, #7166FF, #38bdf8);
   color: #0c0b0b;
-  padding: 0.85rem 1.75rem;
-  border-radius: 2rem;
-  text-decoration: none;
   font-weight: 600;
-  font-size: 0.6rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border: none;
-  cursor: pointer;
-  
-  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
-  will-change: transform;
+  font-size: 0.95rem;
+  padding: 0.875rem 2rem;
+  border-radius: 60px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-gradient:hover {
-  box-shadow: 0 6px 20px #4B8BFF;
-  opacity: 0.92;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 210, 255, 0.3);
 }
 
-/* Responsive Media Queries */
-@media (max-width: 62rem) {
-  .cta-title {
-    font-size: 2.25rem;
-  }
-  .cta-card {
-    padding: 3rem 1.5rem;
-  }
-}
 
-@media (max-width: 48rem) {
+@media (max-width: 768px) {
   .cta-wrapper {
-    padding: 0 1rem;
+    margin: 3rem auto;
   }
+  
   .cta-card {
     padding: 2.5rem 1.25rem;
-    border-radius: 1rem;
   }
+
   .cta-title {
-    font-size: 1.75rem;
+    font-size: 1.65rem;                     
   }
+
   .cta-desc {
-    font-size: 0.875rem;
-  }
-  .btn-gradient {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 }
