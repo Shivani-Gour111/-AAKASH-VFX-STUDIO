@@ -13,7 +13,7 @@ function initGlobe() {
     const width = container.clientWidth;
     const height = container.clientHeight;
     camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-    camera.position.z = 14; 
+    camera.position.z = 22; 
 
     // 3. Renderer Setup
     renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -24,7 +24,7 @@ function initGlobe() {
     globeGroup = new THREE.Group();
 
     // 4. Low-Poly Geometry Size
-    const radius = 6.5;
+    const radius = 8.4;
     const geometry = new THREE.IcosahedronGeometry(radius, 2); 
 
     // 5. Thinner Lines with Color #092934
