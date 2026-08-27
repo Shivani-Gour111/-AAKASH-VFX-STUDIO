@@ -29,7 +29,7 @@ function initGlobe() {
 
     // 5. Thinner Lines with Color #092934
     const lineMaterial = new THREE.MeshBasicMaterial({
-        color: 0x092934,
+        color: 0x084353,  // Dark Teal Color
         wireframe: true,
         transparent: true,
         opacity: 0.35
@@ -58,8 +58,8 @@ function initGlobe() {
     particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
     const particleMaterial = new THREE.PointsMaterial({
-        color: 0x795FFF,      // Bright Neon Purple (Jo aapki image me chamak raha hai)
-        size: 0.06,           // Perfect tiny sharp dots
+        color: 0x7C5CFF,      // Bright Neon Purple (Jo aapki image me chamak raha hai)
+        size: 0.12,           // Perfect tiny sharp dots
         transparent: true,
         opacity: 0.85         // Dark background par perfectly visible rahega
     });
@@ -95,13 +95,13 @@ function onWindowResize() {
 // 7. Continuous Animation Loop
 function animate() {
     requestAnimationFrame(animate);
-    
-    globeGroup.rotation.y += 0.0003; 
-    globeGroup.rotation.x += 0.00005;
+
+    globeGroup.rotation.y += 0.00010; 
+    globeGroup.rotation.x += 0.00003;
 
     // Mouse Parallax Effect (Isse 0.05 se ghatakar 0.01 kar diya hai)
-    globeGroup.rotation.y += mouseX * 0.01;
-    globeGroup.rotation.x += mouseY * 0.01;
+    globeGroup.rotation.y += mouseX * 0.02;
+    globeGroup.rotation.x += mouseY * 0.02;
 
     renderer.render(scene, camera);
 }
