@@ -97,8 +97,8 @@ function animate() {
     requestAnimationFrame(animate);
 
     // Constant Continuous Rotation
-    globeGroup.rotation.y += 0.0022;
-    globeGroup.rotation.x += 0.0007;
+    globeGroup.rotation.y += 0.0008;
+    globeGroup.rotation.x += 0.0003;
 
     // Subtle Mouse parallax
     globeGroup.rotation.y += mouseX * 0.05;

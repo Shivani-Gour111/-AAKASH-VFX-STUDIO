@@ -211,7 +211,7 @@ body {
 
 
 .hero-heading {
-  font-size: 4rem;
+  font-size: 4.5rem;
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -1.5px;
@@ -219,7 +219,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #a78bfa, #38bdf8);
+  background: linear-gradient(98deg, #7365FF, #38bdf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -308,7 +308,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 0.60rem;
-  color: #ffffff;
+  color: #F3F2EF;
   letter-spacing: 1px;
   padding: 0 20px;
   cursor: pointer;
@@ -660,8 +660,8 @@ body {
 }
 
 .wb-desc {
-  color: #9ca3af;
-  font-size: 1rem;
+  color: #93919F;
+  font-size: 0.96rem;
   line-height: 1.6;
   margin-bottom: 1.25rem;
 }
@@ -686,11 +686,11 @@ body {
 }
 
 .wb-card {
-  border-bottom: 1px solid #15151D;
+  border-bottom: 1px solid #202028;
   padding: 1.25rem 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  background: #15151D;
+  background: #0B0B10;
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
               background-color 0.3s ease,
               border-color 0.3s ease;
@@ -698,8 +698,8 @@ body {
 
 .wb-card:hover {
   transform: translateX(0.5rem);
-  background-color: rgba(255, 255, 255, 0.03);
-  border-bottom-color: #00d2ff;
+  background-color: #0b0b10;
+  border-bottom-color: #202028;
 }
 
 .wb-card-head {
@@ -860,3 +860,5 @@ body {
     font-size: 0.9rem;
   }
 }
+
+
