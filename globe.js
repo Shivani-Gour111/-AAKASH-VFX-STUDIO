@@ -95,16 +95,17 @@ function onWindowResize() {
 // 7. Continuous Animation Loop
 function animate() {
     requestAnimationFrame(animate);
+    
+    globeGroup.rotation.y += 0.0003; 
+    globeGroup.rotation.x += 0.00005;
 
-    // Constant Continuous Rotation
-    globeGroup.rotation.y += 0.0008;
-    globeGroup.rotation.x += 0.0003;
-
-    // Subtle Mouse parallax
-    globeGroup.rotation.y += mouseX * 0.05;
-    globeGroup.rotation.x += mouseY * 0.05;
+    // Mouse Parallax Effect (Isse 0.05 se ghatakar 0.01 kar diya hai)
+    globeGroup.rotation.y += mouseX * 0.01;
+    globeGroup.rotation.x += mouseY * 0.01;
 
     renderer.render(scene, camera);
 }
+
+
 
 window.addEventListener('load', initGlobe);
