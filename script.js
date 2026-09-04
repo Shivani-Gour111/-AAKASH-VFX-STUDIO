@@ -276,3 +276,29 @@ document.addEventListener("mouseout", function (e) {
     btn.style.transform = "translate(0px, 0px)";
   }
 });
+
+window.addEventListener('load', () => {
+  const progressBar = document.getElementById('progress-bar');
+  const counter = document.getElementById('loader-counter');
+  const preloader = document.getElementById('preloader');
+  const loaderText = document.querySelector('.loader-text');
+
+  let progress = 0;
+  
+  const interval = setInterval(() => {
+    progress += 1;
+
+    if (progress <= 100) {
+      progressBar.style.width = progress + '%';
+      counter.innerText = progress + '%';
+      
+      // Text color percentage ke sath fill hota rahega
+      loaderText.style.setProperty('--loader-progress', progress + '%');
+    } else {
+      clearInterval(interval);
+      setTimeout(() => {
+        preloader.classList.add('hide');
+      }, 300);
+    }
+  }, 40);
+});

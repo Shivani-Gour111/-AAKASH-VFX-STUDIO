@@ -105,13 +105,7 @@
 
 //     renderer.render(scene, camera);
 // }
-
-
-
-
 // window.addEventListener('load', initGlobe);
-
-
 // --- THREE.JS GLOBE WITH THIN LINES, AUTOMATIC ROTATION & RADIANT PURPLE DOTS ---
 
 let scene, camera, renderer, globeGroup;
