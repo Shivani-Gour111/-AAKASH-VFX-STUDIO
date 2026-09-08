@@ -4,7 +4,7 @@ html {
 }
 
 #whats-here, #about {
-  scroll-margin-top: 80px; /* Jisse fixed navbar ke peeche text na chupe */
+  scroll-margin-top: 80px; 
 }
 
 * {

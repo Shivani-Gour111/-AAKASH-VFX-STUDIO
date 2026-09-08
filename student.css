@@ -10,6 +10,48 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
 }
 
+
+/* Google Font Import (Fonts ke liye) */
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@800&display=swap');
+
+/* Color Variables */
+:root {
+  --violet: #7C5CFF;
+  --cyan: #00D4FF;
+  --lime: #C6FF5C;
+  --ink: #F4F3F0;
+}
+
+/* Heading Styling */
+.heading {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 800;
+  line-height: 1.02;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Color Animation Class */
+.heading .grad {
+  background: linear-gradient(90deg, var(--violet), var(--cyan), var(--lime), var(--violet));
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hue 6s linear infinite;
+}
+
+/* Keyframes Animation */
+@keyframes hue {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 300% center;
+  }
+}
 /* ================= HERO SECTION ================= */
 .hero-section {
   max-width: 1200px;

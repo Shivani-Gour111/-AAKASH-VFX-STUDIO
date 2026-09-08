@@ -283,22 +283,35 @@ window.addEventListener('load', () => {
   const preloader = document.getElementById('preloader');
   const loaderText = document.querySelector('.loader-text');
 
+  // Check karo agar user is session me pehle aa chuka hai
+  if (sessionStorage.getItem('hasVisited')) {
+    preloader.style.display = 'none'; // Direct hide kar do
+    return;
+  }
+
   let progress = 0;
   
+  // Speed Fast karne ke liye: interval time 15ms kar diya aur progress +2 increment hoga
   const interval = setInterval(() => {
-    progress += 1;
+    progress += 2; // Fast progress increment
 
     if (progress <= 100) {
       progressBar.style.width = progress + '%';
       counter.innerText = progress + '%';
       
-      // Text color percentage ke sath fill hota rahega
-      loaderText.style.setProperty('--loader-progress', progress + '%');
+      // Aapka Text Color Fill Animation Logic
+      if (loaderText) {
+        loaderText.style.setProperty('--loader-progress', progress + '%');
+      }
     } else {
       clearInterval(interval);
+      
+      // Page load complete hone par session save kar lo
+      sessionStorage.setItem('hasVisited', 'true');
+
       setTimeout(() => {
         preloader.classList.add('hide');
-      }, 300);
+      }, 150); // Hide delay fast kar diya
     }
-  }, 40);
+  }, 15); // 40ms se ghata kar 15ms kar diya (bohot fast chalega)
 });

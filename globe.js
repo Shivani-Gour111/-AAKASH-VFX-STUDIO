@@ -113,26 +113,18 @@ const container = document.getElementById('webgl-container');
 
 function initGlobe() {
     if (!container) return;
-
-    // 1. Scene Setup
     scene = new THREE.Scene();
-
-    // 2. Camera Setup (Offset position.x removed for clean centering inside container)
     const width = container.clientWidth;
     const height = container.clientHeight;
     camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
     camera.position.x = 0;
-    camera.position.z = 24; // Thoda distance badhaya taaki zoom par container boundaries break na hon
-
-    // 3. Renderer Setup
+    camera.position.z = 24; 
     renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
     globeGroup = new THREE.Group();
-
-    // 4. Low-Poly Geometry Size (Radius 8.4 intact)
     const radius = 8.4; 
     const geometry = new THREE.IcosahedronGeometry(radius, 2); 
 
