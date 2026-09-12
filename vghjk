@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDENT CRUSH - Courses</title>
+
+    <link rel="stylesheet" href="student.css" />
+    <link rel="stylesheet" href="home.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Custom Cursor Elements (JS sync ke liye zaroori hain) -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline">
+        <span class="cursor-text"></span>
+    </div>
+
+    <main class="hero-section">
+        <!-- VFX Badge -->
+        <div class="vfx-badge">
+            <span class="dot"></span>
+            SELF-PACED LEARNING
+        </div>
+        <!-- VFX Title -->
+        <h1 class="vfx-title">
+            Learn VFX, 3D & AI — at your own pace, from real production work.
+        </h1>
+        <!-- VFX Description -->
+        <div class="hero-body">
+            <p class="vfx-desc">
+                Structured video courses in Unreal Engine, 3ds Max, Blender, Maya, and AI content tools — taught by a
+                working VFX professional and university faculty, not a generic tutorial channel.
+            </p>
+            <div class="circle-icon">
+                <span class="inner-dot"></span>
+            </div>
+        </div>
+
+        <div class="catalog-header">
+            <span class="sub-heading">COURSE CATALOG</span>
+            <h1 class="catalog-title">Pick a track and start learning today.</h1>
+        </div>
+        
+
+
+        <div class="pricing-container">
+            <p class="tagline">PAYMENT DETAILS</p>
+            <h1 class="heading">Simple pricing, no hidden costs.</h1>
+            <p class="description">
+                Every course is a one-time purchase with lifetime access. Pick a single course or save with a bundle.
+            </p>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="globe.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+
+
+.course-grid {
+  display: grid;
+  /* 1. Max size ko 1fr ki jagah 320px set karo taaki grid expand na ho */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 320px));
+  
+  /* 2. Grid ko screen ke center me align karo */
+  justify-content: center; 
+  
+  /* Column aur Row ka gap ab exact kaam karega */
+  column-gap: 12px; /* Is value se aap gaps jitna chahein kam/badha sakte hain */
+  row-gap: 24px;
+  
+  padding: 20px 10px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Base Course Card */
+.course-card {
+  background: #0D1117;
+  border-radius: 8px;
+  border: 1px solid #21242A;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.course-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.15);
+
+}
+/* Specific Course Card Customizations (Top Accent Line) */
+.course-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+}
+
+/* .card-unreal-mastery::before { background: #6366f1; }
+.card-max-fundamentals::before { background: #3b82f6; }
+.card-blender-vfx::before { background: #f97316; }
+.card-maya-animation::before { background: #ec4899; }
+.card-vfx-compositing::before { background: #8b5cf6; }
+.card-ai-creators::before { background: #10b981; } */
+
+/* Level Tag */
+.course-level {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #80e160;
+ 
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+/* Course Title */
+.course-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FAF5FE;
+  margin: 0 0 10px 0;
+}
+
+/* Course Description */
+.course-card .desc {
+  font-size: 14px;
+  color: #888793;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+  flex-grow: 1;
+}
+
+/* Meta Data (Duration & Lessons) */
+.course-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: #374151;
+  font-weight: 500;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #272c32;
+}
+
+/* Footer (Price & CTA) */
+
+
+.course-price {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f9fbff;
+}

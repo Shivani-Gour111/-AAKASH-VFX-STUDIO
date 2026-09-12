@@ -12,26 +12,38 @@ html {
   padding: 0;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
 }
 :root {
-  bg-color: #0b0b13;
-  text-primary: #ffffff;
-  text-secondary: #9494a8;
-  accent-cyan: #38bdf8;
-  accent-green: #a3e635;
-  line-color: rgba(255, 255, 255, 0.1);
+  --bg-color: #0b0b13;
+  --text-primary: #ffffff;
+  --text-secondary: #9494a8;
+  --accent-cyan: #38bdf8;
+  --accent-green: #a3e635;
+  --line-color: rgba(255, 255, 255, 0.1);
+  --site-max-width: 1200px; 
+  --site-padding: 0 2rem;
 }
+
+
 
 body, a, button, input, select, textarea {
   cursor: none !important;
 }
 
-body {
+/* body {
   background-color: var(--bg-color);
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
+} */
+
+body {
+  padding-top: 80px;
+  background-color: #0b0b10;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 
@@ -434,29 +446,11 @@ body {
   }
 }
 
-/* ================= GLOBAL / ROOT VARIABLES ================= */
-:root {
-  --site-max-width: 1200px; 
-  --site-padding: 0 2rem;
-}
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-body {
-  background-color: #0b0b10;
-  color: #ffffff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
+
 
 /* ================= MARQUEE SECTION ================= */
 
-.marquee {
-  display: flex;
-  white-space: nowrap;
-  gap: 2rem;
-}
+
 
 /* ================= FEATURE CARDS SECTION ================= */
 .fc-section {
@@ -690,10 +684,10 @@ body {
     border-bottom: 1px solid #1e1e2d; 
   }
 
-  .hero-container {
+  /* .hero-container {
     flex-direction: column;
     align-items: flex-start;
-  }
+  } */
 }
 
 @media (max-width: 480px) {
@@ -824,67 +818,8 @@ body {
 }
 
 /* ================= CTA BANNER SECTION ================= */
-.cta-wrapper {
-  width: 100%;
-  max-width: var(--site-max-width, 1200px);
-  margin: 4rem auto;
-  padding: var(--site-padding, 0 2rem);
-  box-sizing: border-box;
-}
 
-.cta-card {
-  background: #0d1117;
-  border: 1px solid #1f2937;
-  border-radius: 16px;
-  padding: 3rem 2rem;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
-}
 
-.cta-title {
-  font-size: 2rem;
-  font-weight: 750;
-  color: #ffffff;
-  margin-bottom: 1rem;
-}
-
-.cta-desc {
-  color: #9ca3af;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-}
-
-/* ================= RESPONSIVE FIX ================= */
-@media (max-width: 768px) {
-  .wb-container {
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-  
-  .wb-left,
-  .wb-right {
-    max-width: 100%;
-    width: 100%;
-  }
-  
-  .wb-title {
-    font-size: 1.75rem;
-  }
-  
-  .cta-card {
-    padding: 2rem 1rem;
-  }
-}
-/* --- CTA BANNER SECTION STYLES --- */
-/* ================= CTA BANNER SECTION ================= */
-.cta-wrapper {
-  width: 100%;
-  max-width: var(--site-max-width, 1200px); 
-  margin: 5rem auto;                        
-  padding: var(--site-padding, 0 2rem);      
-  box-sizing: border-box;
-}
 
 .cta-card {
  background: radial-gradient(circle at 20% 0%, #302857 0%, #15151D 65%, #15151D);
@@ -900,6 +835,23 @@ body {
   justify-content: center;
 }
 
+
+.cta-desc {
+  color: #9ca3af;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* ================= RESPONSIVE FIX ================= */
+
+.cta-wrapper {
+  width: 100%;
+  max-width: var(--site-max-width, 1200px); 
+  margin: 5rem auto;                        
+  padding: var(--site-padding, 0 2rem);      
+  box-sizing: border-box;
+
+}
 .cta-title {
   font-size: 2.25rem;                      
   font-weight: 750;
@@ -908,13 +860,13 @@ body {
   line-height: 1.25;
 }
 
-.cta-desc {
+/* .cta-desc {
   color: #9ca3af;
   font-size: 1rem;                          
   max-width: 550px;                          
   line-height: 1.6;
   margin: 0 0 2rem 0;
-}
+} */
 
 /* Button Alignment & Styling */
 .btn-gradient {

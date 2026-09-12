@@ -1,42 +1,106 @@
 // const cursorDot = document.querySelector(".cursor-dot");
 // const cursorOutline = document.querySelector(".cursor-outline");
 // const cursorText = document.querySelector(".cursor-text");
+// const fcCursor = document.getElementById("fc-cursor"); // Feature cards cursor
 
-// // 1. Cursor Movement Logic
+// // 1. Unified Mouse Movement Tracking
 // window.addEventListener("mousemove", function (e) {
 //   const posX = e.clientX;
 //   const posY = e.clientY;
 
-//   cursorDot.style.left = `${posX}px`;
-//   cursorDot.style.top = `${posY}px`;
+//   // Global Dot Movement
+//   if (cursorDot) {
+//     cursorDot.style.left = `${posX}px`;
+//     cursorDot.style.top = `${posY}px`;
+//   }
 
-//   cursorOutline.animate({
-//     left: `${posX}px`,
-//     top: `${posY}px`
-//   }, { duration: 150, fill: "forwards" });
+//   // Global Outline Smooth Tracking
+//   if (cursorOutline) {
+//     cursorOutline.animate(
+//       { left: `${posX}px`, top: `${posY}px` },
+//       { duration: 150, fill: "forwards" }
+//     );
+//   }
+
+//   // Feature Cards Cursor Tracking (Agar alag ID use ho rahi ho)
+//   if (fcCursor) {
+//     fcCursor.style.left = `${posX}px`;
+//     fcCursor.style.top = `${posY}px`;
+//   }
 // });
 
-// // 2. Cursor Zoom & Text Display (Sabhi data-cursor-text tags ke liye)
+// // 2. Combined Hover & Text Logic (Features Cards + Project Cards + Data attributes)
 // document.addEventListener("mouseover", function (e) {
-//   const target = e.target.closest("[data-cursor-text]");
-//   if (target) {
-//     cursorOutline.classList.add("cursor-hover");
-//     cursorText.innerText = target.getAttribute("data-cursor-text");
+//   const fcCard = e.target.closest(".fc-card");
+//   const projectCard = e.target.closest(".project-card");
+//   const textTarget = e.target.closest("[data-cursor-text]");
+
+//   // A. Feature Cards Logic (Online Courses, Live Classes, Sell Your Projects)
+//   if (fcCard) {
+//     const text = fcCard.getAttribute("data-text") || "EXPLORE";
+    
+//     if (cursorOutline) {
+//       cursorOutline.classList.add("cursor-hover");
+//       if (cursorText) cursorText.innerText = text;
+//     }
+//     if (fcCursor) {
+//       fcCursor.innerText = text;
+//       fcCursor.classList.add("active");
+//     }
+//   } 
+//   // B. Project Grid Cards Logic (SLOT 01 - 06)
+//   else if (projectCard) {
+//     const text = projectCard.getAttribute("data-text") || "SOON";
+    
+//     if (cursorOutline) {
+//       cursorOutline.classList.add("cursor-hover");
+//       if (cursorText) cursorText.innerText = text;
+//     }
+//   } 
+//   // C. Generic data-cursor-text elements
+//   else if (textTarget) {
+//     const text = textTarget.getAttribute("data-cursor-text");
+    
+//     if (cursorOutline) {
+//       cursorOutline.classList.add("cursor-hover");
+//       if (cursorText) cursorText.innerText = text;
+//     }
 //   }
 // });
 
 // document.addEventListener("mouseout", function (e) {
-//   const target = e.target.closest("[data-cursor-text]");
-//   if (target) {
-//     cursorOutline.classList.remove("cursor-hover");
-//     cursorText.innerText = "";
+//   const fcCard = e.target.closest(".fc-card");
+//   const projectCard = e.target.closest(".project-card");
+//   const textTarget = e.target.closest("[data-cursor-text]");
+
+//   if (fcCard || projectCard || textTarget) {
+//     if (cursorOutline) {
+//       cursorOutline.classList.remove("cursor-hover");
+//       if (cursorText) cursorText.innerText = "";
+//     }
+//     if (fcCursor) {
+//       fcCursor.classList.remove("active");
+//     }
 //   }
 // });
 
-// // 3. Magnetic Effect (Enroll Now + Start Learning + What's Here teeno buttons par chalega)
+// // 3. Inner Mouse Position Glow Light (Dono Cards ke liye)
+// const glowCards = document.querySelectorAll(".project-card, .fc-card, .vfx-card");
+// glowCards.forEach((card) => {
+//   card.addEventListener("mousemove", (e) => {
+//     const rect = card.getBoundingClientRect();
+//     const x = e.clientX - rect.left;
+//     const y = e.clientY - rect.top;
+
+//     card.style.setProperty("--mouse-x", `${x}px`);
+//     card.style.setProperty("--mouse-y", `${y}px`);
+//   });
+// });
+
+// // 4. Magnetic Buttons Logic
 // document.addEventListener("mousemove", function (e) {
-//   const btn = e.target.closest(".btn-enroll, .btn-primary, .btn-secondary");
-  
+//   const btn = e.target.closest(".btn-enroll, .btn-primary, .btn-secondary, .btn-gradient");
+
 //   if (btn) {
 //     const pos = btn.getBoundingClientRect();
 //     const x = e.clientX - pos.left - pos.width / 2;
@@ -47,121 +111,56 @@
 // });
 
 // document.addEventListener("mouseout", function (e) {
-//   const btn = e.target.closest(".btn-enroll, .btn-primary, .btn-secondary");
+//   const btn = e.target.closest(".btn-enroll, .btn-primary, .btn-secondary, .btn-gradient");
 //   if (btn) {
 //     btn.style.transform = "translate(0px, 0px)";
 //   }
 // });
 
-// // const cards = document.querySelectorAll('.vfx-card');
+// window.addEventListener('load', () => {
+//   const progressBar = document.getElementById('progress-bar');
+//   const counter = document.getElementById('loader-counter');
+//   const preloader = document.getElementById('preloader');
+//   const loaderText = document.querySelector('.loader-text');
 
-// // cards.forEach((card) => {
-// //   const badge = card.querySelector('.vfx-hover-badge');
+//   // Check karo agar user is session me pehle aa chuka hai
+//   if (sessionStorage.getItem('hasVisited')) {
+//     preloader.style.display = 'none'; // Direct hide kar do
+//     return;
+//   }
 
-// //   card.addEventListener('mousemove', (e) => {
-// //     // 1. Mouse Position inside Card (Isse background shade button ke exact piche chalega)
-// //     const rect = card.getBoundingClientRect();
-// //     const x = e.clientX - rect.left;
-// //     const y = e.clientY - rect.top;
+//   let progress = 0;
+  
+//   // Speed Fast karne ke liye: interval time 15ms kar diya aur progress +2 increment hoga
+//   const interval = setInterval(() => {
+//     progress += 2; // Fast progress increment
 
-// //     card.style.setProperty('--mouse-x', `${x}px`);
-// //     card.style.setProperty('--mouse-y', `${y}px`);
+//     if (progress <= 100) {
+//       progressBar.style.width = progress + '%';
+//       counter.innerText = progress + '%';
+      
+//       // Aapka Text Color Fill Animation Logic
+//       if (loaderText) {
+//         loaderText.style.setProperty('--loader-progress', progress + '%');
+//       }
+//     } else {
+//       clearInterval(interval);
+      
+//       // Page load complete hone par session save kar lo
+//       sessionStorage.setItem('hasVisited', 'true');
 
-// //     // 2. Chota Floating Badge Button movement
-// //     badge.style.left = `${e.clientX}px`;
-// //     badge.style.top = `${e.clientY}px`;
-// //   });
-// // });
-
-// const cursor = document.getElementById('fc-cursor');
-// const cards = document.querySelectorAll('.fc-card');
-
-// // Mouse position update for dynamic smooth movement
-// document.addEventListener('mousemove', (e) => {
-//   cursor.style.left = `${e.clientX}px`;
-//   cursor.style.top = `${e.clientY}px`;
-// });
-
-// cards.forEach(card => {
-//   // Glow Light Follow Logic inside Card
-//   card.addEventListener('mousemove', (e) => {
-//     const rect = card.getBoundingClientRect();
-//     const x = e.clientX - rect.left;
-//     const y = e.clientY - rect.top;
-
-//     card.style.setProperty('--mouse-x', `${x}px`);
-//     card.style.setProperty('--mouse-y', `${y}px`);
-//   });
-
-//   // Cursor Show and Custom Text Logic (EXPLORE / VIEW / SOON)
-//   card.addEventListener('mouseenter', () => {
-//     const text = card.getAttribute('data-text');
-//     cursor.innerText = text;
-//     cursor.classList.add('active');
-//   });
-
-//   // Cursor Hide Logic
-//   card.addEventListener('mouseleave', () => {
-//     cursor.classList.remove('active');
-//   });
-// });
-
-// // Select magnetic button
-// const magneticBtn = document.querySelector('.btn-gradient');
-
-// if (magneticBtn) {
-//   magneticBtn.addEventListener('mousemove', function(e) {
-//     const position = magneticBtn.getBoundingClientRect();
-    
-//     // Calculate cursor position relative to the center of the button
-//     const x = e.clientX - position.left - position.width / 2;
-//     const y = e.clientY - position.top - position.height / 2;
-    
-//     // Magnetic intensity factor (0.3 matlab smooth magnetic pull)
-//     magneticBtn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
-//   });
-
-//   magneticBtn.addEventListener('mouseleave', function() {
-//     // Reset position when mouse leaves
-//     magneticBtn.style.transform = 'translate(0px, 0px)';
-//   });
-// }
-
-//   document.addEventListener('DOMContentLoaded', () => {
-//   const cards = document.querySelectorAll('.project-card');
-
-//   cards.forEach((card) => {
-//     // 1. Double cursor roknay ke liye check karo, agar missing hai tabhi naya div banao
-//     let follower = card.querySelector('.cursor-follower');
-//     if (!follower) {
-//       follower = document.createElement('div');
-//       follower.className = 'cursor-follower';
-//       follower.innerHTML = '<span class="dot"></span><span class="soon-txt">SOON</span>';
-//       card.appendChild(follower);
+//       setTimeout(() => {
+//         preloader.classList.add('hide');
+//       }, 150); // Hide delay fast kar diya
 //     }
+//   }, 15); // 40ms se ghata kar 15ms kar diya (bohot fast chalega)
+// });
 
-//     // 2. Mouse track karke movement position set karo
-//     card.addEventListener('mousemove', (e) => {
-//       const rect = card.getBoundingClientRect();
-//       const x = e.clientX - rect.left;
-//       const y = e.clientY - rect.top;
-
-//       follower.style.left = `${x}px`;
-//       follower.style.top = `${y}px`;
-//     });
-//   });
-// })
-
-;
-
-
-
-// 
 
 const cursorDot = document.querySelector(".cursor-dot");
 const cursorOutline = document.querySelector(".cursor-outline");
 const cursorText = document.querySelector(".cursor-text");
-const fcCursor = document.getElementById("fc-cursor"); // Feature cards cursor
+const fcCursor = document.getElementById("fc-cursor");
 
 // 1. Unified Mouse Movement Tracking
 window.addEventListener("mousemove", function (e) {
@@ -182,23 +181,21 @@ window.addEventListener("mousemove", function (e) {
     );
   }
 
-  // Feature Cards Cursor Tracking (Agar alag ID use ho rahi ho)
+  // Feature Cards Cursor Tracking
   if (fcCursor) {
     fcCursor.style.left = `${posX}px`;
     fcCursor.style.top = `${posY}px`;
   }
 });
 
-// 2. Combined Hover & Text Logic (Features Cards + Project Cards + Data attributes)
+// 2. Combined Hover & Text Logic
 document.addEventListener("mouseover", function (e) {
   const fcCard = e.target.closest(".fc-card");
   const projectCard = e.target.closest(".project-card");
   const textTarget = e.target.closest("[data-cursor-text]");
 
-  // A. Feature Cards Logic (Online Courses, Live Classes, Sell Your Projects)
   if (fcCard) {
     const text = fcCard.getAttribute("data-text") || "EXPLORE";
-    
     if (cursorOutline) {
       cursorOutline.classList.add("cursor-hover");
       if (cursorText) cursorText.innerText = text;
@@ -207,20 +204,14 @@ document.addEventListener("mouseover", function (e) {
       fcCursor.innerText = text;
       fcCursor.classList.add("active");
     }
-  } 
-  // B. Project Grid Cards Logic (SLOT 01 - 06)
-  else if (projectCard) {
+  } else if (projectCard) {
     const text = projectCard.getAttribute("data-text") || "SOON";
-    
     if (cursorOutline) {
       cursorOutline.classList.add("cursor-hover");
       if (cursorText) cursorText.innerText = text;
     }
-  } 
-  // C. Generic data-cursor-text elements
-  else if (textTarget) {
+  } else if (textTarget) {
     const text = textTarget.getAttribute("data-cursor-text");
-    
     if (cursorOutline) {
       cursorOutline.classList.add("cursor-hover");
       if (cursorText) cursorText.innerText = text;
@@ -244,17 +235,35 @@ document.addEventListener("mouseout", function (e) {
   }
 });
 
-// 3. Inner Mouse Position Glow Light (Dono Cards ke liye)
+// 3. Inner Glow Light + Project Card Follower Movement
 const glowCards = document.querySelectorAll(".project-card, .fc-card, .vfx-card");
 glowCards.forEach((card) => {
+  const follower = card.querySelector(".cursor-follower");
+
   card.addEventListener("mousemove", (e) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
+    // CSS variables update for radial glow light
     card.style.setProperty("--mouse-x", `${x}px`);
     card.style.setProperty("--mouse-y", `${y}px`);
+
+    // Card inner follower tracking (SLOT cards ke liye)
+    if (follower) {
+      follower.style.left = `${x}px`;
+      follower.style.top = `${y}px`;
+      follower.style.opacity = "1";
+      follower.style.transform = "translate(-50%, -50%) scale(1)";
+    }
   });
+
+  if (follower) {
+    card.addEventListener("mouseleave", () => {
+      follower.style.opacity = "0";
+      follower.style.transform = "translate(-50%, -50%) scale(0.4)";
+    });
+  }
 });
 
 // 4. Magnetic Buttons Logic
@@ -277,41 +286,33 @@ document.addEventListener("mouseout", function (e) {
   }
 });
 
-window.addEventListener('load', () => {
-  const progressBar = document.getElementById('progress-bar');
-  const counter = document.getElementById('loader-counter');
-  const preloader = document.getElementById('preloader');
-  const loaderText = document.querySelector('.loader-text');
+// 5. Fast Preloader Logic
+window.addEventListener("load", () => {
+  const progressBar = document.getElementById("progress-bar");
+  const counter = document.getElementById("loader-counter");
+  const preloader = document.getElementById("preloader");
+  const loaderText = document.querySelector(".loader-text");
 
-  // Check karo agar user is session me pehle aa chuka hai
-  if (sessionStorage.getItem('hasVisited')) {
-    preloader.style.display = 'none'; // Direct hide kar do
+  if (sessionStorage.getItem("hasVisited")) {
+    if (preloader) preloader.style.display = "none";
     return;
   }
 
   let progress = 0;
-  
-  // Speed Fast karne ke liye: interval time 15ms kar diya aur progress +2 increment hoga
   const interval = setInterval(() => {
-    progress += 2; // Fast progress increment
+    progress += 2;
 
     if (progress <= 100) {
-      progressBar.style.width = progress + '%';
-      counter.innerText = progress + '%';
-      
-      // Aapka Text Color Fill Animation Logic
-      if (loaderText) {
-        loaderText.style.setProperty('--loader-progress', progress + '%');
-      }
+      if (progressBar) progressBar.style.width = progress + "%";
+      if (counter) counter.innerText = progress + "%";
+      if (loaderText) loaderText.style.setProperty("--loader-progress", progress + "%");
     } else {
       clearInterval(interval);
-      
-      // Page load complete hone par session save kar lo
-      sessionStorage.setItem('hasVisited', 'true');
+      sessionStorage.setItem("hasVisited", "true");
 
       setTimeout(() => {
-        preloader.classList.add('hide');
-      }, 150); // Hide delay fast kar diya
+        if (preloader) preloader.classList.add("hide");
+      }, 150);
     }
-  }, 15); // 40ms se ghata kar 15ms kar diya (bohot fast chalega)
+  }, 15);
 });
